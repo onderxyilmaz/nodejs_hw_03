@@ -10,6 +10,20 @@ const app = express();
 
 app.use(express.json());
 
+// Ana sayfa rotası
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to Contacts API",
+    endpoints: {
+      getAllContacts: "GET /contacts",
+      getContactById: "GET /contacts/:contactId",
+      createContact: "POST /contacts",
+      updateContact: "PATCH /contacts/:contactId",
+      deleteContact: "DELETE /contacts/:contactId"
+    }
+  });
+});
+
 // Routers
 app.use("/contacts", contactsRouter);
 
